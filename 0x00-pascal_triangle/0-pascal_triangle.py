@@ -4,6 +4,7 @@ A function that prints Pascal's triangle
 """
 
 def pascal_triangle(n):
+    """Creates the triangle"""
     if n <= 0:
         return []
 
