@@ -1,11 +1,14 @@
-#!/usr/bin/env python3
-"""A method that determines whether a set of data represents
-   a valid utf-8 encoding
+#!/usr/bin/python3
+"""
+A method that determines whether a set of data represents
+a valid utf-8 encoding
 """
 
 
 def validUTF8(data):
-    # Function to check if a given number has the correct UTF-8 prefix
+    """
+    Function to check if a given number has the correct UTF-8 prefix
+    """
     def has_correct_prefix(byte):
         return (byte >> 6) in {2, 3, 4}
 
