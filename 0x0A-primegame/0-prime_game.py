@@ -5,7 +5,8 @@ A function to find the solution to the Prime Game
 
 
 def primes(n):
-    """Return list of prime numbers 
+    """
+    Return list of prime numbers
     """
     prime = []
     sieve = [True] * (n + 1)
