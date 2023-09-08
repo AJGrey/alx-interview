@@ -1,41 +1,37 @@
 #!/usr/bin/python3
 """
-A script that find that winner to the prime numbers gmae
+A function to find the solution to the Prime Game
 """
+
+
+def primes(n):
+    """Return list of prime numbers 
+    """
+    prime = []
+    sieve = [True] * (n + 1)
+    for p in range(2, n + 1):
+        if (sieve[p]):
+            prime.append(p)
+            for i in range(p, n + 1, p):
+                sieve[i] = False
+    return prime
 
 
 def isWinner(x, nums):
     """
-    Returns the winner
+    Determines winner of Prime Game
     """
-    def is_prime(n):
-        """
-        Checks if n is a prime number
-        """
-        if n <= 1:
-            return False
-        for i in range(2, int(n**0.5) + 1):
-            if n % i == 0:
-                return False
-        return True
-
-    def can_win(n):
-        if n <= 1:
-            return False
-        if n % 2 == 0:
-            return True
-        return not is_prime(n)
-
-    maria_wins = 0
-    ben_wins = 0
-
-    for n in nums:
-        if can_win(n):
-            ben_wins += 1
-
-    if maria_wins > ben_wins:
-        return "Maria"
-    elif ben_wins > maria_wins:
-        return "Ben"
-    else:
+    if x is None or nums is None or x == 0 or nums == []:
         return None
+    Maria = Ben = 0
+    for i in range(x):
+        prime = primes(nums[i])
+        if len(prime) % 2 == 0:
+            Ben += 1
+        else:
+            Maria += 1
+    if Maria > Ben:
+        return 'Maria'
+    elif Ben > Maria:
+        return 'Ben'
+    return None
